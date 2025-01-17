@@ -1,0 +1,8 @@
+- Run a VM using Vagrant (Script) on your Local. Open Specific ports to get access to the app on your Local. 
+- After ssh into your Vagrant VM.
+- Install Docker & docker-compose to your Local via ansible-playbook
+- Build and run a dummy code of the flask application.
+- Write a docker-compose file to run the already built flask image in 2nd step with a service of Postgres DB in the same compose file. 
+- Also, link and create a connection of DB with your code.
+- The app container should not run in case the DB container/service is down.
+- Run Nginx on your Local (not in VM), create a domain name of "app.tkxel.com" on your Local, and point this domain to the app container running in your VM.
