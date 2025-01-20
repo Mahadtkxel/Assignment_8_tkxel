@@ -1,0 +1,8 @@
+---
+- name: Configure server with NGINX, Docker and Docker Compose 
+  hosts: localhost
+  become: true
+  roles:
+    - docker
+    - docker_compose
+    
