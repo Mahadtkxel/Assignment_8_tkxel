@@ -1,0 +1,32 @@
+services:
+  post_db:
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - webapp-net
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=flaskapp_db
+
+  webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - post_db
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@post_db:5432/flaskapp_db
+    networks:
+      - webapp-net
+    
+volumes:
+  postgres_data:
+
+networks:
+  webapp-net:
